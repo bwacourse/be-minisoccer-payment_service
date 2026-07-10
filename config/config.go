@@ -35,15 +35,17 @@ type AppConfig struct {
 }
 
 type Database struct {
-	Host                  string `json:"host"`
-	Port                  int    `json:"port"`
-	Name                  string `json:"name"`
-	Username              string `json:"username"`
-	Password              string `json:"password"`
-	MaxOpenConnections    int    `json:"maxOpenConnections"`
-	MaxLifeTimeConnection int    `json:"maxLifeTimeConnection"`
-	MaxIdleConnections    int    `json:"maxIdleConnections"`
-	MaxIdleTime           int    `json:"maxIdleTime"`
+	Host                  string   `json:"host"`
+	Port                  int      `json:"port"`
+	Name                  string   `json:"name"`
+	Username              string   `json:"username"`
+	Password              string   `json:"password"`
+	MaxOpenConnections    int      `json:"maxOpenConnections"`
+	MaxLifeTimeConnection int      `json:"maxLifeTimeConnection"`
+	MaxIdleConnections    int      `json:"maxIdleConnections"`
+	MaxIdleTime           int      `json:"maxIdleTime"`
+	Kafka                 Kafka    `json:"kafka"`
+	Midtrans              Midtrans `json:"midtrans"`
 }
 
 type InternalService struct {
@@ -53,6 +55,19 @@ type InternalService struct {
 type User struct {
 	Host         string `json:"host"`
 	SignatureKey string `json:"signatureKey"`
+}
+
+type Kafka struct {
+	Brokers     []string `json:"brokers"`
+	TimeoutInMs int      `json:"timeoutInMs"`
+	MaxRetry    int      `json:"maxRetry"`
+	Topic       string   `json:"topic"`
+}
+
+type Midtrans struct {
+	ServerKey    string `json:"serverKey"`
+	ClientKey    string `json:"clientKey"`
+	IsProduction bool   `json:"isProduction"`
 }
 
 func Init() {
