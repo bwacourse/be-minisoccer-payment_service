@@ -32,6 +32,8 @@ type AppConfig struct {
 	GCSClientX509CertURL       string `json:"gcsClientX509CertURL"`
 	GCSUniverseDomain          string `json:"gcsUniverseDomain"`
 	GCSBucketName              string `json:"gcsBucketName"`
+	Kafka                 Kafka    `json:"kafka"`
+	Midtrans              Midtrans `json:"midtrans"`
 }
 
 type Database struct {
@@ -44,8 +46,6 @@ type Database struct {
 	MaxLifeTimeConnection int      `json:"maxLifeTimeConnection"`
 	MaxIdleConnections    int      `json:"maxIdleConnections"`
 	MaxIdleTime           int      `json:"maxIdleTime"`
-	Kafka                 Kafka    `json:"kafka"`
-	Midtrans              Midtrans `json:"midtrans"`
 }
 
 type InternalService struct {

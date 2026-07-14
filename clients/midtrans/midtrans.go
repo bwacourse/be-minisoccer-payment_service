@@ -61,11 +61,11 @@ func (c *MidtransClient) CreatePaymentLink(request *dto.PaymentRequest) (*Midtra
 
 	req := &snap.Request{
 		TransactionDetails: midtrans.TransactionDetails{
-			OrderID:     request.OrderID,
+			OrderID:  request.OrderID,
 			GrossAmt: int64(request.Amount),
 		},
 		CustomerDetail: &midtrans.CustomerDetails{
-			FName:  request.CustomerDetail.Name,
+			FName: request.CustomerDetail.Name,
 			Email: request.CustomerDetail.Email,
 			Phone: request.CustomerDetail.Phone,
 		},
