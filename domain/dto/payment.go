@@ -13,7 +13,7 @@ type PaymentRequest struct {
 	OrderID        string          `json:"orderId"`
 	ExpiredAt      time.Time       `json:"expiredAt"`
 	Amount         float64         `json:"amount"`
-	Description    string          `json:"description"`
+	Description    *string         `json:"description"`
 	CustomerDetail *CustomerDetail `json:"customerDetail"`
 	ItemDetail     []ItemDetail    `json:"itemDetail"`
 }

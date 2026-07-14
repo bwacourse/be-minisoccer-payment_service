@@ -1,13 +1,19 @@
 package repositories
 
-import "gorm.io/gorm"
+import (
+	paymentRepository "payment-service/repositories/payment"
+	paymentHistoryRepository "payment-service/repositories/paymenthistory"
+
+	"gorm.io/gorm"
+)
 
 type RegistryRepository struct {
 	db *gorm.DB
 }
 
 type IRegistryRepository interface {
-	GetPayment() any
+	GetPayment() paymentRepository.IPaymentRepository
+	GetPaymentHistory() paymentHistoryRepository.IPaymentHistoryRepository
 }
 
 func NewRegistryRepository(db *gorm.DB) IRegistryRepository {
@@ -16,7 +22,12 @@ func NewRegistryRepository(db *gorm.DB) IRegistryRepository {
 	}
 }
 
-// GetField implements IRegistryRepository.
-func (r *RegistryRepository) GetPayment() any {
-	panic("not implemented")
+// GetPayment implements [IRegistryRepository].
+func (r *RegistryRepository) GetPayment() paymentRepository.IPaymentRepository {
+	return paymentRepository.NewPaymentRepository(r.db)
+}
+
+// GetPaymentHistory implements [IRegistryRepository].
+func (r *RegistryRepository) GetPaymentHistory() paymentHistoryRepository.IPaymentHistoryRepository {
+	return paymentHistoryRepository.NewPaymentHistoryRepository(r.db)
 }
