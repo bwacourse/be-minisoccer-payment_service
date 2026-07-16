@@ -199,7 +199,7 @@ func (p *PaymentService) Webhook(ctx context.Context, request *dto.WebHook) erro
 		bank := request.VANumbers[0].Bank
 
 		// Update Payment
-		paymentAfterUpdate, txErr = p.repository.GetPayment().Update(ctx, tx, request.OrderID.String(), &dto.UpdatePaymentRequest{
+		_, txErr = p.repository.GetPayment().Update(ctx, tx, request.OrderID.String(), &dto.UpdatePaymentRequest{
 			TransactionID: &request.TransactionID,
 			Status:        &status,
 			PaidAt:        paidAt,
@@ -207,6 +207,13 @@ func (p *PaymentService) Webhook(ctx context.Context, request *dto.WebHook) erro
 			Bank:          &bank,
 			Acquirer:      request.Acquirer,
 		})
+
+		if txErr != nil {
+			return txErr
+		}
+
+		// Get detail payment by orderId which has been updated
+		paymentAfterUpdate, txErr = p.repository.GetPayment().FindByOrderID(ctx, request.OrderID.String())
 
 		if txErr != nil {
 			return txErr
