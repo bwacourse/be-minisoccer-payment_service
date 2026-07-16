@@ -11,13 +11,13 @@ type KafkaEvent struct {
 }
 
 type KafkaMetaData struct {
-	Sender    string    `json:"sender"`
-	SendingAt time.Time `json:"sendingAt"`
+	Sender    string `json:"sender"`
+	SendingAt string `json:"sendingAt"`
 }
 
 type KafkaData struct {
 	OrderID   uuid.UUID  `json:"orderID"`
-	PaymentID string     `json:"paymentID"`
+	PaymentID uuid.UUID  `json:"paymentID"`
 	Status    string     `json:"status"`
 	ExpiredAt time.Time  `json:"expiredAt"`
 	PaidAt    *time.Time `json:"paidAt"`

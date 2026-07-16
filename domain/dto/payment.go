@@ -63,6 +63,7 @@ type PaymentResponse struct {
 	Bank          *string                       `json:"bank"`
 	Acquirer      *string                       `json:"acquirer"`
 	Description   *string                       `json:"description"`
+	ExpiredAt     *time.Time                    `json:"expiredAt"`
 	CreatedAt     *time.Time                    `json:"createdAt"`
 	UpdatedAt     *time.Time                    `json:"updatedAt"`
 }
