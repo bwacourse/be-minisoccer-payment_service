@@ -2,7 +2,8 @@ package routes
 
 import (
 	"payment-service/clients"
-	"payment-service/controllers"
+	controllers "payment-service/controllers/http"
+	routes "payment-service/routes/payment"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,5 +27,9 @@ func NewRegistryRoute(controller controllers.IRegistryController, routerGroup *g
 }
 
 func (c *RegistryRoute) Serve() {
-	panic("not implemented")
+	c.paymentRoute().Run()
+}
+
+func (c *RegistryRoute) paymentRoute() routes.IPaymentRoute {
+	return routes.NewPaymentRoute(c.controllers, c.client, c.routerGroup)
 }
