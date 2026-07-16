@@ -9,10 +9,10 @@ const (
 	Settlement PaymentStatus = 200
 	Expire     PaymentStatus = 300
 
-	InitialString    PaymentStatusString = "Initial"
-	PendingString    PaymentStatusString = "Pending"
-	SettlementString PaymentStatusString = "Settlement"
-	ExpireString     PaymentStatusString = "Expire"
+	InitialString    PaymentStatusString = "initial"
+	PendingString    PaymentStatusString = "pending"
+	SettlementString PaymentStatusString = "settlement"
+	ExpireString     PaymentStatusString = "expire"
 )
 
 var mapPaymentStatusStringToInt = map[PaymentStatusString]PaymentStatus{

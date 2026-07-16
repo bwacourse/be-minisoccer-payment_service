@@ -15,7 +15,7 @@ type PaymentRequest struct {
 	Amount         float64         `json:"amount"`
 	Description    *string         `json:"description"`
 	CustomerDetail *CustomerDetail `json:"customerDetail"`
-	ItemDetail     []ItemDetail    `json:"itemDetail"`
+	ItemDetails    []ItemDetail    `json:"itemDetails"`
 }
 
 type CustomerDetail struct {

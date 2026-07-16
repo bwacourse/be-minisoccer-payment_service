@@ -417,6 +417,7 @@ func (p *PaymentService) produceToKafka(
 			PaymentID: payment.UUID,
 			Status:    req.TransactionStatus.String(),
 			PaidAt:    paidAt,
+			ExpiredAt: *payment.ExpiredAt,
 		},
 	}
 
