@@ -11,7 +11,7 @@ pipeline {
     CONSUL_HTTP_KEY = "backend/payment-service"
     CONSUL_HTTP_URL = credentials('consul-http-url')
     CONSUL_HTTP_TOKEN = credentials('consul-http-token')
-    CONSUL_WATCH_INTERVAL_SECONDS = 60
+    CONSUL_WATCH_INTERVAL_SECONDS = credentials('consul-watch-interval-seconds')
   }
 
   stages {
